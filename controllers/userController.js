@@ -21,7 +21,7 @@ class UserController {
       const { email, password } = req.body;
 
       const userData = await userService.login(email, password);
-      res.cookie('accessToken', userData.token, { maxAge: 30 * 60 * 1000, httpOnly: false });
+      res.cookie('accessToken', userData.token, { maxAge: 30 * 60 * 1000, httpOnly: true, secure: true });
       
       return res.json(userData)
     } catch (error) {
