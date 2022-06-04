@@ -23,9 +23,9 @@ class UserController {
       const userData = await userService.login(email, password);
       res.cookie('accessToken', userData.token, { 
           maxAge: 30 * 60 * 1000,
-          path: 'https://blog-frontend-12.herokuapp.com', 
+          domain: 'https://blog-frontend-12.herokuapp.com', 
           httpOnly: true, 
-          // secure: true, 
+          secure: true, 
           // SameSite: 'none' 
         }
       );
