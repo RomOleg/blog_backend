@@ -24,7 +24,7 @@ class UserController {
       res.cookie('accessToken', userData.token, { 
           maxAge: 30 * 60 * 1000,
           domain: '.blog-frontend-12.herokuapp.com', 
-          httpOnly: true, 
+          // httpOnly: true,
           secure: true, 
           // SameSite: 'none' 
         }
