@@ -7,7 +7,6 @@ class UserController {
       const { email, password } = req.body;
 
       const userData = await userService.registration(email, password);
-      res.cookie('accessToken', userData.token, { maxAge: 30 * 60 * 1000, httpOnly: true });
 
       return res.json({ message: 'Вы зарегистрированы', email: userData.email })
     } catch (error) {
@@ -21,14 +20,6 @@ class UserController {
       const { email, password } = req.body;
 
       const userData = await userService.login(email, password);
-      res.cookie('accessToken', userData.token, { 
-          maxAge: 30 * 60 * 1000,
-          domain: '.blog-frontend-12.herokuapp.com', 
-          // httpOnly: true,
-          secure: true, 
-          // SameSite: 'none' 
-        }
-      );
       
       return res.json(userData)
     } catch (error) {
